@@ -22,3 +22,40 @@ function incrementString (strng) {
   // return incrementedString
 }
 
+1. String to Array
+2. Last element of array
+3. If last element - letter return array to string and +1
+4. If last elemeте - number return array last element + 1 => array to string => return this string
+
+My solution
+
+function incrementString (strng) {
+  const arr = strng.split('')
+  const last = arr[arr.length - 1]
+  if (last === [0-9] )  {
+    const lastEl = last + 1
+   const newArr =  arr.splice(arr.length - 1, 1, lastEl)
+    return newArr.join('')
+  }
+  else  {
+    arr.push("1")
+    return arr.join('')
+  }
+}
+
+Correct solution:
+
+variant 1
+function incrementString (strng) {
+const body = strng.slice(0, -1);
+  const lastDigit = strng.slice(-1).match(/[0-9]/);
+  return lastDigit === null
+    ? strng + "1"
+    : lastDigit != 9
+    ? body + (+lastDigit + 1)
+    : incrementString(body) + "0";
+}
+
+
+
+
